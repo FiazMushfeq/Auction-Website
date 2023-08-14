@@ -14,7 +14,7 @@
 			Last Name: <input type="text" placeholder="Enter Last Name" name="lastName" required>
 			Username: <input type="text" placeholder="Enter Username" name="username" required>
 			Password: <input type="password" placeholder="Enter Password" name="password" required>
-			<input type="submit" value="Register!"/>
+			<input type="submit" value="Register"/>
 	   </form>
 	</body>
 </html>

@@ -11,6 +11,16 @@ CREATE TABLE users(
     primary key(`username`)
 );
 
+DROP TABLE IF EXISTS users;
+CREATE TABLE users(
+	`email` varchar(20) not null,
+	`firstName` varchar(20) not null,
+    `lastName` varchar(20) not null,
+    `username` varchar(20) not null,
+    `password` varchar(20) not null,
+    primary key(`username`)
+);
+
 INSERT INTO users(`email`, `firstName`, `lastName`, `username`, `password`) VALUES 
     ('yo@yahoo.com', 'abc', 'def', 'user0', 'pass0');
     

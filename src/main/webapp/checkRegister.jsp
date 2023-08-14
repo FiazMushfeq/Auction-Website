@@ -38,8 +38,8 @@
 				} else {
 					out.print("Username is already taken!");
 					%>
-					<a href="register.jsp">Try registering again!</a>
-				<%
+						<a href="register.jsp">Try registering again!</a>
+					<%
 				}
 				db.closeConnection(con);
 			} catch (SQLException e) { //

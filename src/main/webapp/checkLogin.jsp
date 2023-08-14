@@ -25,8 +25,10 @@
 				//Run the query against the database.
 				ResultSet result = stmt.executeQuery(str);
 				if(result.next()) {
+					session.setAttribute("username", username);
 					%>
 						Welcome <%=request.getParameter("username")%>
+						<a href='homepage.jsp'>Home Page</a>
 						<a href='logout.jsp'>Log out</a>
 					<%
 				} else {
