@@ -26,6 +26,7 @@
 				ResultSet result = stmt.executeQuery(str);
 				if(result.next()) {
 					session.setAttribute("username", username);
+					session.setAttribute("userId", result.getInt("id")); // Assuming "id" is the column name for the user ID
 					%>
 						Welcome <%=request.getParameter("username")%>
 						<a href='homepage.jsp'>Home Page</a>
