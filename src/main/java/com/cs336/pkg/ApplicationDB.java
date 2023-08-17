@@ -2,18 +2,37 @@ package com.cs336.pkg;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ApplicationDB {
+
+    private static final long CHECK_INTERVAL = 60 * 1000; // 1 minute
+
+    static {
+        Timer timer = new Timer(true);
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                checkAndCloseAuctions();
+            }
+        }, 0, CHECK_INTERVAL);
+    }
 	
 	public ApplicationDB(){
 		
 	}
-
+	
+	
+	
 	public Connection getConnection(){
 		
 		//Create a connection string
-		String connectionUrl = "jdbc:mysql://localhost:3306/schema";
+		//String connectionUrl = "jdbc:mysql://localhost:3306/schema";
+		String connectionUrl = "jdbc:mysql://localhost:3306/schema?useSSL=false&serverTimezone=UTC";
 		Connection connection = null;
 		
 		try {
@@ -50,8 +69,37 @@ public class ApplicationDB {
 		}
 	}
 	
+    private static void closeAuction(int itemId) {
+        // Determine the winning bid
+        // Handle the transaction process
+        // Notify the winner and seller
+        // Update the auction status in the database
+    }
+
 	
-	
+	private static void checkAndCloseAuctions() {
+	    ApplicationDB db = new ApplicationDB();
+	    Connection con = null;
+	    try {
+	        con = db.getConnection();
+	        // Query to fetch auctions that need to be closed
+	        // You might need to adjust the query according to your schema
+	        String query = "SELECT * FROM item WHERE closing_time <= NOW() AND status = 'active'";
+	        PreparedStatement pstmt = con.prepareStatement(query);
+	        ResultSet rs = pstmt.executeQuery();
+
+	        while (rs.next()) {
+	            int itemId = rs.getInt("id");
+	            closeAuction(itemId);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        if (con != null) {
+	            db.closeConnection(con);
+	        }
+	    }
+	}
 	
 	
 	public static void main(String[] args) {

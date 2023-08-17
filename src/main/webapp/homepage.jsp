@@ -49,6 +49,7 @@
             <a href="homepage.jsp">Home</a>
             <a href="listing.jsp">Create Listing</a>
             <a href="userProfile.jsp"> My Profile</a>
+            <a href="search.jsp">Search</a> 
             <a href="logout.jsp">Logout</a>
             <!-- Add other links as needed -->
         </div>

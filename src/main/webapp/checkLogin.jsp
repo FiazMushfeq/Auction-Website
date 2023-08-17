@@ -8,8 +8,38 @@
    <head>
    		<meta charset="UTF-8">
     	<title>Checking Login Info</title>
+    	<style>
+            #navbar {
+              overflow: hidden;
+              background-color: #333;
+            }
+
+            #navbar a {
+              float: left;
+              display: block;
+              color: #f2f2f2;
+              text-align: center;
+              padding: 14px 16px;
+              text-decoration: none;
+            }
+
+            #navbar a:hover {
+              background-color: #ddd;
+              color: black;
+            }
+        </style>
   	</head>
    <body>
+   		<div id="navbar">
+            <a href="homepage.jsp">Home</a>
+            <a href="listing.jsp">Create Listing</a>
+            <a href="userProfile.jsp"> My Profile</a>
+            <a href="search.jsp">Search</a>
+            <a href="buyerAuctions.jsp">View Buyer Auctions</a>
+			<a href="sellerAuctions.jsp">View Seller Auctions</a> 
+            <a href="logout.jsp">Logout</a>
+            <!-- Add other links as needed -->
+        </div>
 		<% 
 			try {
 				//Get the database connection
@@ -28,9 +58,7 @@
 					session.setAttribute("username", username);
 					session.setAttribute("userId", result.getInt("id")); // Assuming "id" is the column name for the user ID
 					%>
-						Welcome <%=request.getParameter("username")%>
-						<a href='homepage.jsp'>Home Page</a>
-						<a href='logout.jsp'>Log out</a>
+						
 					<%
 				} else {
 					out.print("Invalid/Incorrect username or password!");
