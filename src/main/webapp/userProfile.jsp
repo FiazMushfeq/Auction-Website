@@ -34,6 +34,9 @@
             <a href="homepage.jsp">Home</a>
             <a href="listing.jsp">Create Listing</a>
             <a href="userProfile.jsp"> My Profile</a>
+            <a href="search.jsp">Search</a>
+            <a href="buyerAuctions.jsp">View Buyer Auctions</a>
+			<a href="sellerAuctions.jsp">View Seller Auctions</a> 
             <a href="logout.jsp">Logout</a>
             <!-- Add other links as needed -->
         </div>
@@ -56,6 +59,7 @@
 			<input type="password" name="password" required><br>
 			<input type="submit" value="Update Profile">
 		</form>
+		
 
 		<!-- Rest of the code remains the same -->
 	</body>
